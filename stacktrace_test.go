@@ -19,7 +19,7 @@ func display() {
 
 func ExamplePrint() {
 	boo()
-	// Output:
+	// Output
 	// 06: [Function]goexit [File]/usr/local/Cellar/go/1.9.2/libexec/src/runtime/asm_amd64.s:2337
 	// 05: [Function]tRunner [File]/usr/local/Cellar/go/1.9.2/libexec/src/testing/testing.go:746
 	// 04: [Function]TestOutputStackTrace [File]./stacktrace/stacktrace_test.go:23
