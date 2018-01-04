@@ -28,7 +28,7 @@ func formatPath(path, separator string) string {
 	return path
 }
 
-func dumpStackTrace(separator string) (callerInfo []*CallerInfo) {
+func dump(separator string) (callerInfo []*CallerInfo) {
 	for i := 1; ; i++ {
 		pc, _, _, ok := runtime.Caller(i) // https://golang.org/pkg/runtime/#Caller
 		if !ok {
@@ -51,18 +51,19 @@ func dumpStackTrace(separator string) (callerInfo []*CallerInfo) {
 			FileLine:     fileLine,
 		})
 	}
-	return
+	// Remove first element from callerInfo because it's a stacktrace internal function
+	return callerInfo[1:]
 }
 
-// GetStackTrace returns slice of CallerInfo address
-func GetStackTrace(separator string) []*CallerInfo {
-	info := dumpStackTrace(separator)
+// Get slice of CallerInfo addresses
+func Get(separator string) []*CallerInfo {
+	info := dump(separator)
 	return info
 }
 
-// OutputStackTrace output stack trace information by io.Writer
-func OutputStackTrace(w io.Writer, separator string) {
-	info := dumpStackTrace(separator)
+// Print stack trace information to given io.Writer
+func Print(w io.Writer, separator string) {
+	info := dump(separator)
 	for i := len(info) - 1; i > -1; i-- {
 		v := info[i]
 		fmt.Fprintf(w, "%02d: [Function]%s [File]%s:%d\n", i, v.FunctionName, v.FileName, v.FileLine)

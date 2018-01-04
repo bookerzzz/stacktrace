@@ -12,18 +12,24 @@ Example is included in `stacktrace_test.go`.
 ```go
 import "github.com/bookerzzz/stacktrace"
 
-stacktrace.OutputStackTrace(os.Stdout, "your_package_name")
+stacktrace.Print(os.Stdout, "your_package_name")
 
 // or for customised output
 
-info := stacktrace.GetStackTrace("your_package_name")
+info := stacktrace.Get("your_package_name")
 for i := len(info) - 1; i > -1; i-- {
     v := info[i]
     fmt.Printf("%02d: [Function]%s [File]%s:%d\n", i, v.FunctionName, v.FileName, v.FileLine)
 }
 // Output
-// 03: [Function]goexit [File]/usr/local/Cellar/go/1.9.2/libexec/src/runtime/asm_amd64.s:2337
-// 02: [Function]tRunner [File]/usr/local/Cellar/go/1.9.2/libexec/src/testing/testing.go:746
-// 01: [Function]TestGetStackTrace [File]./stacktrace/stacktrace_test.go:35
-// 00: [Function]GetStackTrace [File]./stacktrace/stacktrace.go:57}
+// 09: [Function]goexit [File]/usr/local/go/src/runtime/asm_amd64.s:2337
+// 08: [Function]main [File]/usr/local/go/src/runtime/proc.go:185
+// 07: [Function]main [File]./stacktrace/_test/_testmain.go:44
+// 06: [Function]Run [File]/usr/local/go/src/testing/testing.go:922
+// 05: [Function]runExamples [File]/usr/local/go/src/testing/example.go:46
+// 04: [Function]runExample [File]/usr/local/go/src/testing/example.go:122
+// 03: [Function]ExamplePrint [File]./stacktrace/stacktrace_test.go:21
+// 02: [Function]boo [File]./stacktrace/stacktrace_test.go:9
+// 01: [Function]foo [File]./stacktrace/stacktrace_test.go:13
+// 00: [Function]display [File]./stacktrace/stacktrace_test.go:17
 ```
