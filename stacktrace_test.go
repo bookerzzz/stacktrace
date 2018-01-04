@@ -14,12 +14,12 @@ func foo() {
 }
 
 func display() {
-	Print(os.Stdout, "bookerzzz")
+	Print(os.Stdout)
 }
 
 func ExamplePrint() {
 	boo()
-	// Output
+	// Output:
 	// 06: [Function]goexit [File]/usr/local/Cellar/go/1.9.2/libexec/src/runtime/asm_amd64.s:2337
 	// 05: [Function]tRunner [File]/usr/local/Cellar/go/1.9.2/libexec/src/testing/testing.go:746
 	// 04: [Function]TestOutputStackTrace [File]./stacktrace/stacktrace_test.go:23
@@ -30,7 +30,7 @@ func ExamplePrint() {
 }
 
 func ExampleGet() {
-	info := Get("bookerzzz")
+	info := Get()
 	for i := len(info) - 1; i > -1; i-- {
 		v := info[i]
 		fmt.Printf("%02d: [Function]%s [File]%s:%d\n", i, v.FunctionName, v.FileName, v.FileLine)
