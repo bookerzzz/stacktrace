@@ -3,7 +3,7 @@ Debug code by stacktrace
 
 ## Install:
 ```sh
-go get github.com/bookerzzz/stacktrace
+go get -u github.com/bookerzzz/stacktrace
 ```
 
 ## Usage:
